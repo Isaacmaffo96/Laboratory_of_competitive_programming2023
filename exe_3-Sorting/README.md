@@ -1,4 +1,4 @@
-Sorting slides
+Sorting algorithm
 - Bubble sort
 - Selection sort
 - Insertion sort
