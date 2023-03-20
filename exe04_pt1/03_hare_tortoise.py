@@ -54,7 +54,8 @@ def naive_solution(l):
     return False
 
 
-"""Complexity:
+"""
+Complexity:
     - time: O(n)
     - space: O(1)
 """

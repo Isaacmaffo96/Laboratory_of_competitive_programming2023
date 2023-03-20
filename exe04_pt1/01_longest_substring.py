@@ -3,8 +3,7 @@
 Problem:
 ========
 
-You are given a string s. Find the longest substring without repeating
-characters.
+You are given a string s. Find the longest substring without repeating characters.
 
 Example:
 ========
@@ -14,7 +13,8 @@ result = "bcde"
 """
 
 
-"""Complexity:
+"""
+Complexity:
     -time: O(n^2) [worst case: "abcde...zz"]
     -space: O(n) [worst case: "abcde...zz"]
 """
