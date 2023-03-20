@@ -64,8 +64,7 @@ def naive_solution(heights):
     return max_water
 
 
-"""
-Complexity:
+"""Complexity:
     - time: O(n)
     - space: O(1)
 """
