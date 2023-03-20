@@ -1,37 +1,38 @@
-# Merge Sort
-import random as rd
+def mergesort(sequence):
 
+    if len(sequence) > 1:
 
-def merge_sort(sequence):
-
-    if len(sequence) == 1:
-        return sequence
-
-    middle = len(sequence) // 2
-    left_s = merge_sort(sequence[:middle])
-    right_s = merge_sort(sequence[middle:])
-
-    i = j = k = 0
-    while i < len(left_s) and j < len(right_s):
-        if left_s[i] < right_s[j]:
+        # split the sequence and apply mergesort to the subsequences
+        middle = len(sequence) // 2 # integer division
+        left_s = mergesort(sequence[0 : middle])
+        right_s = mergesort(sequence[middle : len(sequence)])
+                             
+        # merge the two ordered subsequences
+        i = j = k = 0        
+        while i < len(left_s) and j < len(right_s):
+            if left_s[i] < right_s[j]:
+                sequence[k] = left_s[i]
+                i += 1
+            else:
+                sequence[k] = right_s[j]                
+                j += 1
+            k += 1
+            
+        # copy the remaining tail
+        while i < len(left_s):
             sequence[k] = left_s[i]
             i += 1
-        else:
-            sequence[k] = right_s[j]
+            k += 1
+        while j < len(right_s):
+            sequence[k] = right_s[j]                
             j += 1
-        k += 1
+            k += 1
 
-    while i < len(left_s):
-        sequence[k] = left_s[i]
-        i += 1
-        k += 1
+        # return the sorted subsequence
+        return sequence
 
-    while j < len(right_s):
-        sequence[k] = right_s[j]
-        j += 1
-        k += 1
-
-    return sequence
+    # base case
+    return [sequence[0]]
 
 
 """
@@ -41,11 +42,3 @@ Time:
     • average O(n log n)
 Space: O(n)
 """
-
-size = int(rd.uniform(0, 100)) + 1000
-mylist = [int(rd.uniform(0, 1000)) for i in range(size)]
-print(mylist)
-mylist2 = mylist.copy()
-print(merge_sort(mylist))
-mylist2.sort()
-print("Sorted?", mylist2 == mylist)

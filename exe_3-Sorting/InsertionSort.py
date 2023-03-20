@@ -1,21 +1,24 @@
-# Insertion Sort
-import random as rd
-
-
-def insertion_sort(sequence):
+def insertionsort(sequence, start=None, end=None):
 
     if len(sequence) <= 1:
-        return sequence
+        return
 
-    for i in range(1, len(sequence)):
-        j = i
+    # start and end can be used to work with subsequences (see hybrid approach)
+    if not start and not end:
+        start = 1
+        end = len(sequence)
+
+    for i in range(start, end):
+
         curr = sequence[i]
-        while j > 0 and sequence[j-1] > curr:
-            sequence[j] = sequence[j-1]
+        j = i
+        # find the location j where curr should be placed, move all
+        # the elements greater than curr to the right of curr
+        while j > 0 and sequence[j-1] > curr: # note the precedence relation
+            sequence[j] = sequence[j-1] # move forward the element in position j-1
             j -= 1
-        else:
+        else:  # insert curr in the correct position
             sequence[j] = curr
-    return sequence
 
 
 """
@@ -25,11 +28,3 @@ Time:
     • average O(n2) 
 Space: O(1)
 """
-
-size = int(rd.uniform(0, 100)) + 1000
-mylist = [int(rd.uniform(0, 1000)) for i in range(size)]
-print(mylist)
-mylist2 = mylist.copy()
-print(insertion_sort(mylist))
-mylist2.sort()
-print("Sorted?", mylist2 == mylist)

@@ -1,35 +1,49 @@
-# Heap Sort
-import random as rd
-
-
 def heapify(sequence, n, i):
+
+    # sift (move large keys upward)
     while True:
-        largest = i
-        left = 2 * i + 1
-        right = 2 * i + 2
 
-        if left < n:
-            if sequence[left] > sequence[largest]:
+        largest = i  # current root
+        left = 2 * i + 1  # left child of the tree rooted in i
+        right = 2 * i + 2  # right child of the tree rooted in i
+
+        if left < n:  # 1st out-of-bound check
+            if sequence[left] > sequence[i]:
                 largest = left
-
-        if right < n:
+        if right < n:  # 2nd out-of-bound check
             if sequence[right] > sequence[largest]:
                 largest = right
-
+        
         if largest != i:
+            # move the largest key upward
             sequence[i], sequence[largest] = sequence[largest], sequence[i]
+            # keep sifting one child
             i = largest
         else:
+            # stop sifting
             break
+        
+
+""" Transforms a given sequence into a max heap, then extracts all the
+(sorted) keys"""
 
 
-def heap_sort(sequence):
+def heapsort(sequence):
+
     n = len(sequence)
+
+    # build the max heap
     for i in range(n, -1, -1):
         heapify(sequence, n, i)
 
+    # sort the sequence, until the max heap is empty:
+    # 1. extract the largest key (at position 0)
+    # 2. prepend it to the sorted sequence
+    # 3. shorten and rebuild the max heap
     for i in range(n-1, 0, -1):
-        sequence[0], sequence[i] = sequence[i], sequence[0]
+        # steps 1 and 2
+        sequence[0], sequence[i]= sequence[i], sequence[0]
+        # step 3
         heapify(sequence, i, 0)
 
 
@@ -41,11 +55,5 @@ Time:
 Space: O(1)
 """
 
-size = int(rd.uniform(0, 100)) + 1000
-mylist = [int(rd.uniform(0, 1000)) for i in range(size)]
-print(mylist)
-mylist2 = mylist.copy()
-heap_sort(mylist)
-print(mylist)
-mylist2.sort()
-print("Sorted?", mylist2 == mylist)
+""" Note that we will study more efficient strategies for building the
+heap in a few weeks """
