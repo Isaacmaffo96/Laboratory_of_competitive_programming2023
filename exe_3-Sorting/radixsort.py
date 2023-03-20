@@ -1,7 +1,7 @@
 def countingsort(sequence, power):
 
     size = len(sequence)
-    occurences = [0]*10 # 10 buckets 
+    occurences = [0]*10  # 10 buckets
 
     # compute the occurences
     for i in range(size):
@@ -22,7 +22,7 @@ def countingsort(sequence, power):
         bucket = (sequence[i] // power) % 10
         occurences[bucket] -= 1 
         newPosition = occurences[bucket]
-        output[newPosition] = elem # no-override by construction
+        output[newPosition] = elem  # no-override by construction
         i -= 1
 
     return output
@@ -50,3 +50,10 @@ def radixsort(sequence):
         digits -= 1
 
     return output
+
+
+"""
+Time: O(nd) 
+Space: O(n + d)
+Where d is the number of digits
+"""
