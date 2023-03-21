@@ -51,8 +51,6 @@ def naive_solution(s):
         # move left forward
         left += 1
 
-    
-
     return s[start:end+1]
 
 
