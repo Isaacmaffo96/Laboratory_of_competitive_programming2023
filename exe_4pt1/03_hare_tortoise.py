@@ -71,7 +71,7 @@ def fs_solution(l):
 
     # FAST and SLOW keep jumping, FAST jumps twice faster than SLOW
     # FAST will reach the end of the sequence before SLOW
-    # fast jumps -> pos check -> slow jumps -> fast jumps -> pos check    
+    # fast jumps -> pos check -> slow jumps -> fast jumps -> pos check
     while fast is not None:
         fast = l[fast]
         if fast == slow:
