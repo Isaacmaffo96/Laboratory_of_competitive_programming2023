@@ -2,9 +2,9 @@
 learn how to insert and search keys, visit the tree in different ways
 (in-order, pre-order, post-order), compute the height of the tree,
 test whether the tree is full, how to "reverse" the tree, and finally
-how to lookup the lowest common ancestor for two nodes.
+how to look up the lowest common ancestor for two nodes.
 
-However, the some of the following methods have TWO major PROBLEMS:
+However, some of the following methods have TWO major PROBLEMS:
 
 1) insert leaves the tree unbalanced, hence it may collapse into a
 list
@@ -101,6 +101,16 @@ class mBinaryTree:
                     curr = curr.left
 
         return False
+
+    """
+             A
+            / \
+           B   C
+      In Order : [B,A,C]
+      Pre Order: [A,B,C]
+      Post Order: [B,C,A]
+    """
+
 
     def inOrder(self, sio=None):
 
