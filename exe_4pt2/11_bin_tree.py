@@ -204,17 +204,50 @@ class mBinaryTree:
         return True
 
     def reverseTree(self):
-        """Reverses key ordering"""
-        # write your code here
-        pass
+        """Reverses key ordering
+
+        Complexity:
+           -T: O(N) where N is the number of keys
+           -S: O(N) unbalanced tree, O(log2(N)) for balanced tree
+        """
+
+        toReverse = deque([self])
+        while len(toReverse) > 0:
+            curr = toReverse.pop()
+            curr.left, curr.right = curr.right, curr.left
+            if curr.left:
+                toReverse.append(curr.left)
+            if curr.right:
+                toReverse.append(curr.right)
 
     def lca(self, ka, kb):
         """Given two keys ka and kb, returns the lowest node in the
         tree that is a common ancestor of the nodes storing ka and
         k3. Assumes that ka and kb are always stored in the tree.
+
+        Complexity (for a balanced tree):
+            -T: O(log2(N))
+            -S: O(1)
         """
-        # write your code here
-        pass
+
+        # perform two searches with na and nb
+        na = nb = ancestor = self
+
+        while na.key == nb.key:
+
+            ancestor = na
+
+            if na.key < ka:
+                na = na.right
+            elif na.key > ka:
+                na = na.left
+
+            if nb.key < kb:
+                nb = nb.right
+            elif nb.key > kb:
+                nb = nb.left
+
+        return ancestor, ancestor.key
 
     # HOME PRACTICE
 
