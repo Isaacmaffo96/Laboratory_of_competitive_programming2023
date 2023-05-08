@@ -94,6 +94,36 @@ def dfs(adl, source, destination=None):
             print(f"{destination} is reachable")
 
 
+def dfs_v2(adl, source, destination=None):
+
+    visited = [False for _ in range(len(adl))]
+    stack = deque([source])
+    print("expl. order -> ", end="")
+
+    while stack:
+        """
+        v = stack[-1]
+        if not visited[v]:
+            visited[v] = True
+            print(v, " ", end="")
+        else:
+            stack.pop(
+        """
+        v = stack.pop()
+        if not visited[v]:
+            visited[v] = True
+            print(v, " ", end="")
+        for dst in adl[v]:
+            if not visited[dst]:
+                stack.append(dst)
+    print()
+    if destination:
+        if not visited[destination]:
+            print(f"{destination} is unreachable")
+        else:
+            print(f"{destination} is reachable")
+
+
 adl = [
     [1, 2, 3, 5],
     [4, 5],
@@ -119,3 +149,8 @@ print("---")
 # depth-first search
 print("DFS")
 dfs(adl, 0, 7)
+
+# depth-first search v2
+print("---")
+print("DFS v2.0")
+dfs_v2(adl, 0, 7)
