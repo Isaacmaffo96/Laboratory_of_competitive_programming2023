@@ -74,7 +74,7 @@ print(f"Same partition {e1}-{e2}?", samePartition(P, e1, e2))
 e1, e2 = 12, 3
 print(f"Same partition {e1}-{e2}?", samePartition(P, e1, e2))
 
-#Partitions: {{0, 1, 2, 4, 5, 6, 7, 8}, {3}, {9}, {10, 11, 14}, 12: {12, 13}}
+#Partitions: { {0, 1, 2, 4, 5, 6, 7, 8}, {3}, {9}, {10, 11, 14}, 12: {12, 13} }
 
 print("------------------------------")
 
