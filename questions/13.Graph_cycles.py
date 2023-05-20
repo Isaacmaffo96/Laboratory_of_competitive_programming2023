@@ -6,37 +6,39 @@ from collections import deque
 def detect_cycles(adl):
     """Detects the presence of a cycle in a directed graph."""
 
-    if len(adl) < 2:
-        return False
+    n = len(adl)
 
-    visited = [False for _ in range(len(adl))]
-    onStack = [False for _ in range(len(adl))]
+    if n < 2:
+        print("no cycle detected")
+        return False  # no cycles with 0 or 1 vertices
+
+    # sequence of DFS visits
     stack = deque([])
+    isVisited = [False for _ in range(n)]
+    onStack = [False for _ in range(n)]
+    for src in range(n):
 
-    for src in adl:
-
-        if visited[src]:
+        if isVisited[src]:
             continue
         else:
             stack.append(src)
 
-        while stack:
-
-            v = stack[-1]
-            if not visited[v]:
-                visited[v] = True
+        while len(stack) > 0:
+            v = stack[-1]  # peek (when the visit to v starts)
+            if not isVisited[v]:
+                isVisited[v] = True
                 onStack[v] = True
             else:
                 onStack[v] = False
-                stack.pop()
+                stack.pop()  # pop (when the visit to v is finished)
 
             for dst in adl[v]:
-                if not visited[dst]:
+                if not isVisited[dst]:
                     stack.append(dst)
                 elif onStack[dst]:
                     return True
 
-        return False
+    return False
 
 
 """Complexity:
