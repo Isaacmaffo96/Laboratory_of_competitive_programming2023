@@ -94,6 +94,8 @@ def dfs(adl, source, destination=None):
             print(f"{destination} is reachable")
 
 
+# -------------------------------------------- #
+
 def dfs_v2(adl, source, destination=None):
 
     visited = [False for _ in range(len(adl))]
