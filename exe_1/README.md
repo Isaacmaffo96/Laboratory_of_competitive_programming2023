@@ -1,4 +1,4 @@
-Python programming fundamentals:
+# Python programming fundamentals:
 <ul>
   <li>Data model</li>
   <li>Name resolution</li>
