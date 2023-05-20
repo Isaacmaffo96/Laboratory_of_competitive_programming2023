@@ -25,10 +25,8 @@ def dfs(adl, source):
     stack = deque([source])
 
     while stack:
-
         vertex = stack.pop()
         visited[vertex] = True
-
         for dst in adl[vertex]:
             if not visited[dst]:
                 stack.append(dst)
