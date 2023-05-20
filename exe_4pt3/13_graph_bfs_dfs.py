@@ -17,7 +17,6 @@ def bfs(adl, source, destination=None):
       smallest number of edges
     - O(V+E) time
     - O(V) space
-
     """
 
     n = len(adl)
@@ -65,7 +64,6 @@ def dfs(adl, source, destination=None):
       because only one path exists for each vertex in that case)
     - T: O(V+E)
     - S: O(V)
-
     """
 
     n = len(adl)
