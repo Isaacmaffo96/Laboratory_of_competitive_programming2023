@@ -5,15 +5,14 @@ and substitutions.
 
 
 Example:
-	s1 = "rose"
-	s2 = "frost"
-	result = 2
-
+    s1 = "rose"
+    s2 = "frost"
+    result = 2
 """
 
 
 def printSubProblems(s1, s2, subProblem):
-    """Prints s1, s2 and subProblem(s) to stdout"""
+    """prints s1, s2 and subProblem(s) to stdout"""
 
     n = len(s1)
     m = len(s2)
@@ -54,8 +53,8 @@ def med(s1, s2, debug=False):
     for i in range(n + 1):
         subProblem[i][0] = i
 
-    for j in range(1, m + 1):
-        for i in range(1, n + 1):
+    for i in range(1, n + 1):
+        for j in range(1, m + 1):
             difference = 1 if s1[i - 1] != s2[j - 1] else 0
             subProblem[i][j] = min(
                 subProblem[i - 1][j] + 1,
