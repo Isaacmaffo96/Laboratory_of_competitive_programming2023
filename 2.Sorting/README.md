@@ -1,4 +1,4 @@
-Sorting algorithm
+# Sorting algorithm
 - Bubble sort
 - Selection sort
 - Insertion sort
