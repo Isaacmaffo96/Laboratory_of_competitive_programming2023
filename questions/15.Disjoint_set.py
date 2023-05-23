@@ -70,5 +70,5 @@ for l in L:
 
 """Complexity:
     - Time: O(M*inv_ack(N))
-    - Space: O(N)
+    - Space: O(M*inv_ack(N))
 """
