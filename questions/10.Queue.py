@@ -58,7 +58,9 @@ class MyQueue:
         # possibly update tail
         if self.length <= 1:
             self.tail = self.head
-
+        # detach elem
+        elem.prev_e = None
+        elem.next_e = None
         return key
 
 

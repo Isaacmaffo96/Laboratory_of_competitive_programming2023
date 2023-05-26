@@ -4,9 +4,8 @@
 
 class Node:
 
-    def __init__(self, key, prev_e=None, next_e=None):
+    def __init__(self, key, next_e=None):
 
-        self.prev_e = prev_e
         self.key = key
         self.next_e = next_e
 
@@ -33,7 +32,6 @@ class MyStack:
             self.head = elem
         else:
             # else extend the stack
-            self.head.prev_e = elem
             elem.next_e = self.head
             self.head = elem
 
@@ -52,6 +50,8 @@ class MyStack:
         self.head = self.head.next_e
         # update length
         self.length -= 1
+        # detach element from stack
+        elem.next_e = None
 
         return key
 

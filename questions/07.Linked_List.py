@@ -83,8 +83,10 @@ class mLinkedList():
             return
 
         if idx == 0:
+            toDelete = self.head
             self.head = self.head.nextNode
             self.length -= 1
+            del toDelete
             return
 
         pos = 0
@@ -93,10 +95,9 @@ class mLinkedList():
             currNode = currNode.nextNode
             pos += 1
 
-        if pos + 2 == self.length:
-            currNode.nextNode = None
-        else:
-            currNode.nextNode = currNode.nextNode.nextNode
+        toDelete = currNode.nextNode
+        currNode.nextNode = currNode.nextNode.nextNode
+        del toDelete
         self.length -= 1
 
 
