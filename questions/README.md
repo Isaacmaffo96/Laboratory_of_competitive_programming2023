@@ -11,9 +11,7 @@
 10. Implementazione dei metodi push e pop per una coda (sequenza di nodi)
 11. Implementazione dei metodi push e pop per una pila (sequenza di nodi)
 12. Visite bfs e dfs (non ricorsive) in grafo diretto
-13. Rilevamento di cicli in grafo diretto (funzione non ricorsiva)
-14. Funzione di auto-completamento prefissi dato un trie (già costruito)
-15. Implementazione di disjoint-set forest con union by rank e path compression (funzioni makeSet,
+13. Funzione di auto-completamento prefissi dato un trie (già costruito)
+14. Implementazione di disjoint-set forest con union by rank e path compression (funzioni makeSet,
 find, union)
-16. Calcolo della minima distanza di edit date due stringhe (con operazioni di cancellazione, inserimento, sostituzione)
-17. Risoluzione del problema dello zaino (massimizzare il valore trasportabile rispettando la capacità)
+15. Calcolo della minima distanza di edit date due stringhe (con operazioni di cancellazione, inserimento, sostituzione)
