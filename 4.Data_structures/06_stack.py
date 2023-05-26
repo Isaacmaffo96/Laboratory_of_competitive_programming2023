@@ -2,14 +2,14 @@ if __package__:
     from .TestHelper import test
 else:
     from TestHelper import test
-    
+
 from io import StringIO
+
 
 class Node:
 
     def __init__(self, key, prev_e=None, next_e=None):
 
-        self.prev_e = prev_e
         self.key = key
         self.next_e = next_e
 
@@ -43,7 +43,6 @@ class MyStack:
             self.head = elem
         else:
             # else extend the stack
-            self.head.prev_e = elem
             elem.next_e = self.head
             self.head = elem
 
@@ -58,10 +57,13 @@ class MyStack:
         elem = self.head
         # extract the key
         key = elem.key
+
         # shorten head
         self.head = self.head.next_e
         # update length
         self.length -= 1
+        # detach element from stack
+        elem.next_e = None
 
         return key
 
@@ -96,4 +98,4 @@ test(stack, "__len__")
 # pop
 for _ in range(5):
     test(stack, "pop")
-test(stack, "__len__")    
+test(stack, "__len__")
