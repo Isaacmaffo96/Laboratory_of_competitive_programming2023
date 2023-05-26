@@ -8,7 +8,7 @@ from io import StringIO
 
 class Node:
 
-    def __init__(self, key, prev_e=None, next_e=None):
+    def __init__(self, key, next_e=None):
 
         self.key = key
         self.next_e = next_e
