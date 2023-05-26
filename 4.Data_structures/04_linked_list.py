@@ -2,19 +2,20 @@
 """
 
 from io import StringIO
-
 """
 An element in the linked list
 """
-class Node:
-    
-   def __init__(self, key=None):
-      self.key = key
-      self.nextNode = None
 
-   def __str__(self):
-       return str(self.key)
-        
+
+class Node:
+
+    def __init__(self, key=None):
+        self.key = key
+        self.nextNode = None
+
+    def __str__(self):
+        return str(self.key)
+
 
 class mLinkedList():
 
@@ -23,45 +24,39 @@ class mLinkedList():
         self.head = None
         self.length = 0
 
-        
-    """Return the length of the list"""
     def __len__(self):
+        """Returns the length of the list"""
 
         return self.length
 
-
-    """Linked list str representation"""
     def __str__(self):
+        """Returns the linked list str representation"""
 
         if self.head is None:
             return str(None)
 
         s = StringIO()
-        
-        currNode = self.head
 
+        currNode = self.head
         while currNode:
             s.write(str(currNode))
-            s.write(" -> ")            
+            s.write(" -> ")
             currNode = currNode.nextNode
 
         s.write(str(None))
 
         return s.getvalue()
-    
-    
 
-    """Add a new key at the beginning of the list"""
     def prepend(self, key):
+        """Adds a new key at the beginning of the list"""
 
         newHead = Node(key)
         newHead.nextNode = self.head
         self.head = newHead
         self.length += 1
 
-        
-    """Append a key to the end of the list"""
     def append(self, key):
+        """Appends a key to the end of the list"""
 
         if self.head is None:
             self.head = Node(key)
@@ -72,14 +67,13 @@ class mLinkedList():
         while currNode:
             if currNode.nextNode is None:
                 currNode.nextNode = Node(key)
-                self.length += 1                
+                self.length += 1
                 return
             currNode = currNode.nextNode
 
-            
-    """Add key to the list at position idx. Raises runtime exception
-    if idx falls outside of the list"""
     def set(self, key, idx):
+        """Adds key to the list at position idx. Raises runtime
+       exception if idx falls outside of the list"""
 
         if self.length < idx:
             raise RuntimeError(f"idx {idx} outside of the list")
@@ -95,20 +89,18 @@ class mLinkedList():
         while pos < idx - 1:
             currNode = currNode.nextNode
             pos += 1
-        
+
         newNode.nextNode = currNode.nextNode
         currNode.nextNode = newNode
         self.length += 1
 
-
-    """Return the node at a given index. Indexes start from 0. None is
-    returned if index is not found
-    """
     def get(self, idx: int):
+        """Returns the node at a given index. Indexes start from
+           0. None is returned if index is not found """
 
         ctr = 0
         currNode = self.head
-        
+
         while ctr != idx:
             if currNode:
                 currNode = currNode.nextNode
@@ -118,18 +110,18 @@ class mLinkedList():
 
         return currNode
 
-
-    """Delete element at position idx. No error message if idx falls
-    outside of the list
-    """
     def deleteAt(self, idx):
+        """Deletes element at position idx. No error message if idx
+       falls outside of the list"""
 
         if idx > self.length - 1:
             return
 
         if idx == 0:
+            toDelete = self.head
             self.head = self.head.nextNode
             self.length -= 1
+            del toDelete
             return
 
         pos = 0
@@ -138,37 +130,32 @@ class mLinkedList():
             currNode = currNode.nextNode
             pos += 1
 
-        if pos + 2 == self.length:
-            currNode.nextNode = None
-        else:
-            currNode.nextNode = currNode.nextNode.nextNode
+        toDelete = currNode.nextNode
+        currNode.nextNode = currNode.nextNode.nextNode
+        del toDelete
         self.length -= 1
 
-
-    """Reverse the list (in-place, no new Node allocations)"""
     def reverse(self):
-       
-       if self.length <= 1:
-          return
-        
-       leftNode = None
-       centerNode = self.head
-       rightNode = self.head.nextNode
+        """Reverses the list (in-place, no new Node allocations)"""
 
-       while rightNode:
-           
-          centerNode.nextNode = leftNode
-          leftNode = centerNode
-          centerNode = rightNode
-          rightNode = rightNode.nextNode
+        if self.length <= 1:
+            return
 
-       centerNode.nextNode = leftNode
-       self.head = centerNode
+        leftNode = None
+        centerNode = self.head
+        rightNode = self.head.nextNode
 
+        while rightNode:
+            centerNode.nextNode = leftNode
+            leftNode = centerNode
+            centerNode = rightNode
+            rightNode = rightNode.nextNode
 
-    """Returns True if there is a cycle in the list"""
+        centerNode.nextNode = leftNode
+        self.head = centerNode
+
     def detectCycle(self):
-        
+        """Returns True if there is a cycle in the list"""
         if self.length == 0:
             return False
 
@@ -182,7 +169,7 @@ class mLinkedList():
             slow = slow.nextNode
             if fast is None:
                 break
-            fast = fast.nextNode            
+            fast = fast.nextNode
             if fast == slow:
                 return True
 
@@ -197,6 +184,8 @@ Run a test and format output
 :printList: turn on/off linked list print
 :params: optional name parameters for the method
 """
+
+
 def test(obj, methodName, printList=True, **params):
 
     # print test params
@@ -214,18 +203,18 @@ def test(obj, methodName, printList=True, **params):
     # run the test
     result = None
     try:
-        # equivalent to l.methodName(p1, p2, p3, ...)        
+        # equivalent to l.methodName(p1, p2, p3, ...)
         result = m(*params.values())
     except RuntimeError as e:
         print("Runtime error: " + str(e))
 
     # print test result
-    print("Result:\t{}".format(result))    
+    print("Result:\t{}".format(result))
     if printList:
         print("List:\t{}".format(obj))
     print("---")
 
-    
+
 """
 Some tests
 """
@@ -242,7 +231,7 @@ print("---")
 # append
 print("Perform 10 append operations")
 for i in range(1, 11):
-    l.append(i*10)
+    l.append(i * 10)
 print("List:\t{}".format(l))
 print("---")
 
@@ -255,7 +244,7 @@ test(l, "get", idx=10)
 test(l, "prepend", key=111)
 
 # len
-test(l, "__len__") # equivalent to len(l)
+test(l, "__len__")  # equivalent to len(l)
 
 # set
 test(l, "set", key=77, idx=20)
@@ -265,9 +254,15 @@ test(l, "set", key=79, idx=13)
 
 # delete
 test(l, "deleteAt", idx=20)
+test(l, "__len__")
 test(l, "deleteAt", idx=0)
+test(l, "__len__")
 test(l, "deleteAt", idx=6)
-test(l, "deleteAt", idx=len(l)-1)
+test(l, "__len__")
+test(l, "deleteAt", idx=len(l) - 2)
+test(l, "__len__")
+test(l, "deleteAt", idx=len(l) - 1)
+test(l, "__len__")
 
 # reverse
 test(l, "reverse")
