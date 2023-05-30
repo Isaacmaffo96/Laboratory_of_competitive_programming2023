@@ -21,6 +21,25 @@ def bfs(adl, source):
 def dfs(adl, source):
     """Explores graph adl with DFS"""
 
+    n = len(adl)
+    s = deque([(source, 0)])
+    visited = [False for _ in range(n)]
+
+    while len(s) != 0:
+        v, e = s[-1]
+        visited[v] = True
+        if e <= len(adl[v]) - 1:
+            dst = adl[v][e]
+            s[-1] = (v, e + 1)
+            if not visited[dst]:
+                s.append((dst, 0))
+        else:
+            s.pop()
+
+
+def dfs_non_ordered(adl, source):
+    """Explores graph adl with DFS"""
+
     visited = [False for _ in range(len(adl))]
     stack = deque([source])
 
